@@ -1,4 +1,3 @@
-import random
 import re
 from typing import Dict, Iterable, List, Union
 
@@ -11,6 +10,7 @@ from xxhash.cpython import xxh64
 from panoramic.cli.husky.core.taxonomy.enums import AggregationType
 from panoramic.cli.husky.service.helpers import RUNTIME_DIALECTS
 from panoramic.cli.husky.service.types.enums import HuskyQueryRuntime
+import secrets
 
 _DEFAULT_MAX_COLUMN_NAME_LENGTH = 63
 """Max column name length - currently, PG only supports 63 characters per column name"""
@@ -19,7 +19,7 @@ _SAFE_IDENTIFIER_HASH_SIZE = 18
 
 
 def _random_bind_param_prefix():
-    return str(random.randint(1, 1000000)) + '_'
+    return str(secrets.SystemRandom().randint(1, 1000000)) + '_'
 
 
 def get_unique_bind_param_name(param_name: str):

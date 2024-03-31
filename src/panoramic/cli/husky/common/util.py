@@ -1,6 +1,6 @@
-import random
 import string
 import traceback
+import secrets
 
 
 class TerminalStyle:
@@ -21,19 +21,19 @@ def exception_to_string_with_traceback(exception: Exception):
 
 
 def random_string(size: int = 5):
-    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(size))
+    return ''.join(secrets.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(size))
 
 
 def random_lowercase_string(size: int = 8):
-    return ''.join((random.choice(string.ascii_lowercase + string.digits) for _ in range(size)))
+    return ''.join((secrets.SystemRandom().choice(string.ascii_lowercase + string.digits) for _ in range(size)))
 
 
 def random_alphabet_string(size: int = 5):
-    return ''.join(random.choice(string.ascii_uppercase) for _ in range(size))
+    return ''.join(secrets.SystemRandom().choice(string.ascii_uppercase) for _ in range(size))
 
 
 def random_int(max_int=2 * 1000 * 1000000):
-    return random.randint(0, max_int)
+    return secrets.SystemRandom().randint(0, max_int)
 
 
 def serialize_class_with_dict_props(class_instance, dict_props):
