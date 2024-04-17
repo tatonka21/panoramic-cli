@@ -6,6 +6,7 @@ from packaging import version
 from tqdm import tqdm
 
 from panoramic.cli.print import echo_error
+from security import safe_requests
 
 URL = "https://a1.panocdn.com/updates/pano-cli/versions.json"
 
@@ -20,7 +21,7 @@ def __fetch_minimum_supported_version(current_version) -> str:
         "minimum_supported_version": "0.1.0",
         "latest_version": "0.1.0"
     }"""
-    response = requests.get(URL, headers={"User-Agent": f"pano-cli/{current_version}"}, timeout=5)
+    response = safe_requests.get(URL, headers={"User-Agent": f"pano-cli/{current_version}"}, timeout=5)
     response.raise_for_status()
     data = response.json()
     return data['minimum_supported_version']
