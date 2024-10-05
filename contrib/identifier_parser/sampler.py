@@ -1,5 +1,4 @@
 import logging
-import random
 from typing import Any, Dict, List, Optional
 
 from core.dremio.client import HuskyDremioClient
@@ -10,6 +9,7 @@ from husky.types.enums import HuskyQueryRuntime
 from husky.util.dremio.dialect import DremioDialect
 from sqlalchemy import column, select, table
 from sqlalchemy.sql.compiler import IdentifierPreparer
+import secrets
 
 logger = logging.getLogger(__name__)
 
@@ -42,4 +42,4 @@ class PhysicalDataSourceSampler:
             if len(data_list) <= self.params.sample_size:
                 return data_list
 
-            return random.sample(data_list, self.params.sample_size)
+            return secrets.SystemRandom().sample(data_list, self.params.sample_size)
