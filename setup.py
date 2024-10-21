@@ -56,6 +56,7 @@ setup(
         "antlr4-python3-runtime==4.8",
         "pydantic==1.5.1",
         "docstring_parser==0.7.3",
+        "security==1.3.1",
     ],
     extras_require={"tests": TEST_REQUIRES, "dev": TEST_REQUIRES + DEV_REQUIRES},
     include_package_data=True,
